@@ -1,0 +1,62 @@
+<html>
+    <head>
+        <title>Redoc</title>
+        <!-- needed for adaptive design -->
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700|Roboto:300,400,700" rel="stylesheet">
+
+        <!--
+            Redoc doesn't change outer page styles
+        -->
+        <style>
+
+
+
+
+
+
+
+body {
+    margin: 0;
+    padding: 0;
+}
+.menu-content{
+    top:60px !important;
+    height:calc(-120px + 100vh) !important; 
+}
+td:nth-child(2){
+    display:inline-block;
+}
+
+*[id]:before{
+}
+#redoc-container CODE{
+ background-color:#00000000 !important;
+}
+#redoc-container h3{
+    display: block;
+    font-size: 1.17em;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+        </style>
+    </head>
+    <body>
+        <div id="redoc-container"/>
+            <script src="/js/redoc.standalone.js"> </script>
+            <script>
+                var search = window.location.search.split('=')[1];
+                var parts = search.split('/')
+                Redoc.init(search,
+                {
+                    scrollYOffset: 50,
+                },
+                document.getElementById('redoc-container'))
+            </script>
+    </body>
+</html>
+
