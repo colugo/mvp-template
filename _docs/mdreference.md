@@ -21,9 +21,7 @@ reportingPartyId | Default value is the ABN/CCID (Australian Business Number/Cus
 
 ### Consignment
 
-```
-A consignment is a transport order for the movement of goods made between a transport service buyer (who could be the importer or the exproter depending on incoterms) and a transport service seller (who could be a freight forwarder or a carrier). It is identified by a bill naumber that can can be at house level (house airway bill or house bill of lading) or at master level (master airway bill or ocean bill of lading).
-```
+> A consignment is a transport order for the movement of goods made between a transport service buyer (who could be the importer or the exproter depending on incoterms) and a transport service seller (who could be a freight forwarder or a carrier). It is identified by a bill naumber that can can be at house level (house airway bill or house bill of lading) or at master level (master airway bill or ocean bill of lading).
 
 Property | Definition | Type
 --- | --- | ---
@@ -38,9 +36,7 @@ status | Consignment status is a read-only structure that is returned by customs
 
 ### ConsignmentStatus
 
-```
-Consignment status is a read-only structure that is returned by customs together with all API responses that include the Consignment object. 
-```
+> Consignment status is a read-only structure that is returned by customs together with all API responses that include the Consignment object.
 
 Property | Definition | Type
 --- | --- | ---
@@ -51,9 +47,7 @@ statusDate | the date and time at which the status changed to this value. | Date
 
 ### ExemptGoods
 
-```
-An exempt goods declaration is required for any goods that have not already been delcared in an Export Declaration - for any of the reasons listed in the exemptionCode (usually for low value goods). 
-```
+> An exempt goods declaration is required for any goods that have not already been delcared in an Export Declaration - for any of the reasons listed in the exemptionCode (usually for low value goods).
 
 Property | Definition | Type
 --- | --- | ---
@@ -65,9 +59,7 @@ goodsOwnerName | If the owner does not have an ABN/CCID, enter the owner name. |
 
 ### Consolidation
 
-```
-A consolidaiton is a collection of individual consignments(usually house level) that are consonoldated into a single consignment (usually at master level)
-```
+> A consolidaiton is a collection of individual consignments(usually house level) that are consonoldated into a single consignment (usually at master level)
 
 Property | Definition | Type
 --- | --- | ---
@@ -84,9 +76,7 @@ establishmentId | The identifier issued by the Department to an approved/license
 
 ### Manifest
 
-```
-The manifest is an abstract class for an air or sea manifest - that lists all consignments on a given flight or voyage.
-```
+> The manifest is an abstract class for an air or sea manifest - that lists all consignments on a given flight or voyage.
 
 Property | Definition | Type
 --- | --- | ---
@@ -99,9 +89,7 @@ emptyContainerCount |  | Numeric
 
 ### Flight
 
-```
-The movement of a flight, between a series of ports, leaving and arriving on specific dates.
-```
+> The movement of a flight, between a series of ports, leaving and arriving on specific dates.
 
 Property | Definition | Type
 --- | --- | ---
@@ -113,9 +101,7 @@ airlineCode | A common code (issued by IATA) that identifies an airline/carrier.
 
 ### Voyage
 
-```
-The movement of a ship, between a series of ports, leaving and arriving on specific dates.
-```
+> The movement of a ship, between a series of ports, leaving and arriving on specific dates.
 
 Property | Definition | Type
 --- | --- | ---
@@ -128,9 +114,7 @@ carrierPartyId | A Party ID assigned by the Department to carriers of Export goo
 
 ### AirManifest
 
-```
-The manifest is an abstract class for an air or sea manifest - that lists all consignments on a given flight or voyage.
-```
+> The manifest is an abstract class for an air or sea manifest - that lists all consignments on a given flight or voyage.
 
 Property | Definition | Type
 --- | --- | ---
@@ -145,9 +129,7 @@ emptyContainerCount |  | Numeric
 
 ### SeaManifest
 
-```
-The manifest is an abstract class for an air or sea manifest - that lists all consignments on a given flight or voyage.
-```
+> The manifest is an abstract class for an air or sea manifest - that lists all consignments on a given flight or voyage.
 
 Property | Definition | Type
 --- | --- | ---
@@ -162,9 +144,7 @@ emptyContainerCount |  | Numeric
 
 ### TerminalMovement
 
-```
-The terminal movement is an abstract class for either a receival at or withdrawal from a termnial of a collection of consignments 
-```
+> The terminal movement is an abstract class for either a receival at or withdrawal from a termnial of a collection of consignments
 
 Property | Definition | Type
 --- | --- | ---
@@ -176,9 +156,7 @@ consignments | The list of consignment items in this consolidation - each identi
 
 ### TerminalWithdrawal
 
-```
-The terminal movement is an abstract class for either a receival at or withdrawal from a termnial of a collection of consignments 
-```
+> The terminal movement is an abstract class for either a receival at or withdrawal from a termnial of a collection of consignments
 
 Property | Definition | Type
 --- | --- | ---
@@ -192,9 +170,7 @@ consignments | The list of consignment items in this consolidation - each identi
 
 ### TerminalReceival
 
-```
-The terminal movement is an abstract class for either a receival at or withdrawal from a termnial of a collection of consignments 
-```
+> The terminal movement is an abstract class for either a receival at or withdrawal from a termnial of a collection of consignments
 
 Property | Definition | Type
 --- | --- | ---
@@ -207,9 +183,7 @@ consignments | The list of consignment items in this consolidation - each identi
 
 ### Subscription
 
-```
-A unique relation to a topic by a subscriber that indicates it should receive updates for that topic. A subscription's unique key is the tuple (Topic URL, Subscriber Callback URL). Subscriptions may (at the hub's decision) have expiration times akin to DHCP leases which must be periodically renewed.
-```
+> A unique relation to a topic by a subscriber that indicates it should receive updates for that topic. A subscription's unique key is the tuple (Topic URL, Subscriber Callback URL). Subscriptions may (at the hub's decision) have expiration times akin to DHCP leases which must be periodically renewed.
 
 Property | Definition | Type
 --- | --- | ---
@@ -219,9 +193,7 @@ hub | The Hub for this subscription | [Hub](#hub)
 
 ### Test
 
-```
-A step along the movement. Represented by a pair of from and to ports.
-```
+> A step along the movement. Represented by a pair of from and to ports.
 
 Property | Definition | Type
 --- | --- | ---
@@ -239,9 +211,7 @@ destinationPortCode | The UNLOCODE of the next port of destination of the vessel
 
 ### Flight
 
-```
-The movement of a flight, between a series of ports, leaving and arriving on specific dates.
-```
+> The movement of a flight, between a series of ports, leaving and arriving on specific dates.
 
 Property | Definition | Type
 --- | --- | ---
@@ -253,9 +223,7 @@ movementLegs | An array of legs along this movement. Legs are a pair of from and
 
 ### Voyage
 
-```
-The movement of a ship, between a series of ports, leaving and arriving on specific dates.
-```
+> The movement of a ship, between a series of ports, leaving and arriving on specific dates.
 
 Property | Definition | Type
 --- | --- | ---
@@ -268,9 +236,7 @@ movementLegs | An array of legs along this movement. Legs are a pair of from and
 
 ### Subscription
 
-```
-A unique relation to a topic by a subscriber that indicates it should receive updates for that topic. A subscription's unique key is the tuple (Topic URL, Subscriber Callback URL). Subscriptions may (at the hub's decision) have expiration times akin to DHCP leases which must be periodically renewed.
-```
+> A unique relation to a topic by a subscriber that indicates it should receive updates for that topic. A subscription's unique key is the tuple (Topic URL, Subscriber Callback URL). Subscriptions may (at the hub's decision) have expiration times akin to DHCP leases which must be periodically renewed.
 
 Property | Definition | Type
 --- | --- | ---
