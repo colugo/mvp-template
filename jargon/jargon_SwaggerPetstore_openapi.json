@@ -1,0 +1,1027 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "description": "This is a sample Pet Store Server based on the OpenAPI 3.0 specification. You can find out more about Swagger at http://swagger.io. In the third iteration of the pet store, we've switched to the design first approach! You can now help us improve the API whether it's by making changes to the definition itself or to the code. That way, with time, we can improve the API in general, and expose some of the new features in OAS3.\n\n",
+    "contact": {
+      "email": "you@example.com",
+      "url": "https://example.com/help"
+    },
+    "version": "0.0.2",
+    "title": "Swagger Petstore"
+  },
+  "paths": {
+    "/pets": {
+      "post": {
+        "tags": [
+          "Pet"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pet"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          }
+        },
+        "summary": "Create a pet",
+        "operationId": "createPet",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Pet"
+              }
+            }
+          }
+        },
+        "description": "Add a new pet to the store",
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/pets/{id}": {
+      "get": {
+        "tags": [
+          "Pet"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "description": "A unique number that identifies Pets",
+            "schema": {
+              "type": "number"
+            },
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pet"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          }
+        },
+        "summary": "Get a Pet",
+        "operationId": "getPetById",
+        "description": "Retrieves a specific pet, by matching on it's id"
+      },
+      "put": {
+        "tags": [
+          "Pet"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "description": "A unique number that identifies Pets",
+            "schema": {
+              "type": "number"
+            },
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pet"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          }
+        },
+        "summary": "Update a Pet",
+        "operationId": "updatePetById",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Pet"
+              }
+            }
+          }
+        },
+        "description": "Updates the details of a specific pet",
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Pet"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "description": "A unique number that identifies Pets",
+            "schema": {
+              "type": "number"
+            },
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pet"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          }
+        },
+        "summary": "Delete a Pet",
+        "operationId": "deletePetById",
+        "description": "Deletes a specific pet",
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/pets/findByStatus": {
+      "get": {
+        "tags": [
+          "Pet"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "status",
+            "description": "The status of a pet, indicating if it has been sold or not. Must be one of the status codes allowable for Pet.status",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "schema": {
+              "type": "number"
+            },
+            "description": "The page that the user wants to return.",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "type": "number"
+            },
+            "description": "The number of results per page the user wants to return.",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Pet"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "Find a Pet by status",
+        "operationId": "listPets_findByStatus",
+        "description": "Searches for pets by their status\n\n\nThis path supports pagination and uses the following query parameters:\n\n| Query Parameter | Description | Example |\n| --- | --- | --- |\n| 'page' | The page that the user wants to return. | 'page=1' (default: 1)|\n| 'limit' | The number of results per page the user wants to return. | 'limit=10' (default: 10)|\n\nThis creates a URI structure similar to:\n\nPage 1: '/customers?page=1&limit=10'\n\nPage 2: '/customers?page=2&limit=10'\n\n                    "
+      }
+    },
+    "/pets/findByTags": {
+      "get": {
+        "tags": [
+          "Pet"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "tag",
+            "description": "The tag to search for",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "schema": {
+              "type": "number"
+            },
+            "description": "The page that the user wants to return.",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "type": "number"
+            },
+            "description": "The number of results per page the user wants to return.",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Pet"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "Get a Pet by Tags",
+        "operationId": "listPets_findByTags",
+        "description": "Searches for pets by their tags\n\n\nThis path supports pagination and uses the following query parameters:\n\n| Query Parameter | Description | Example |\n| --- | --- | --- |\n| 'page' | The page that the user wants to return. | 'page=1' (default: 1)|\n| 'limit' | The number of results per page the user wants to return. | 'limit=10' (default: 10)|\n\nThis creates a URI structure similar to:\n\nPage 1: '/customers?page=1&limit=10'\n\nPage 2: '/customers?page=2&limit=10'\n\n                    "
+      }
+    },
+    "/pets/{id}/uploadImage": {
+      "post": {
+        "tags": [
+          "Pet"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "description": "A unique number that identifies Pets",
+            "schema": {
+              "type": "number"
+            },
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pet"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Add a Pet photo",
+        "operationId": "createPet_uploadImage_uploadImage",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Pet"
+              }
+            }
+          }
+        },
+        "description": "Uploads a photo of a pet",
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/users": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          }
+        },
+        "summary": "Create a User",
+        "operationId": "createUser",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "description": "Registers a new user",
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/users/{username}": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "parameters": [
+          {
+            "name": "username",
+            "description": "The user's chosen username, which is unique across the store and identifies them",
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          }
+        },
+        "summary": "Get a User",
+        "operationId": "getUserById",
+        "description": "Gets the details of a specific user",
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "User"
+        ],
+        "parameters": [
+          {
+            "name": "username",
+            "description": "The user's chosen username, which is unique across the store and identifies them",
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          }
+        },
+        "summary": "Update a User",
+        "operationId": "updateUserById",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "description": "Updates the detalis of a specific user",
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "User"
+        ],
+        "parameters": [
+          {
+            "name": "username",
+            "description": "The user's chosen username, which is unique across the store and identifies them",
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          }
+        },
+        "summary": "Delete a User",
+        "operationId": "deleteUserById",
+        "description": "Removes a specific user",
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/users/createWithList": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          }
+        },
+        "summary": "Create a list of Users",
+        "operationId": "createUser_createWithList_createWithList",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "description": "Creates a bulk list of users",
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/users/login": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          }
+        },
+        "summary": "Login",
+        "operationId": "createUser_login_login",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "description": "Logs in a user",
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/users/logout": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Logout",
+        "operationId": "createUser_logout_logout",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "description": "Logs a user out",
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/store/orders": {
+      "post": {
+        "tags": [
+          "Order"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Order"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          }
+        },
+        "summary": "Create a new Order",
+        "operationId": "createOrder",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Order"
+              }
+            }
+          }
+        },
+        "description": "Creates a new order",
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/store/orders/{id}": {
+      "get": {
+        "tags": [
+          "Order"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "description": "A unique number assigned to every order",
+            "schema": {
+              "type": "number"
+            },
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Order"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          }
+        },
+        "summary": "Get a Order",
+        "operationId": "getOrderById",
+        "description": "Gets the details of an order",
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Order"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "description": "A unique number assigned to every order",
+            "schema": {
+              "type": "number"
+            },
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Order"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          }
+        },
+        "summary": "Delete a Order",
+        "operationId": "deleteOrderById",
+        "description": "Deletes a specific order",
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "parameters": {
+      "protective_marking": {
+        "in": "header",
+        "name": "X-Protective-Marking",
+        "schema": {
+          "type": "string"
+        },
+        "x-example": "X-Protective-Marking: VER=<ver>, NS=gov.au, SEC=<securityClassification>",
+        "description": "Transmission of any payload, request or response, containing data classified as having a high business impact level or above SHOULD apply by an ‘x-protective-marking’ HTTP header.\n-\tAn ‘x-protective-marking’ HTTP header MUST be used to apply appropriate protective marking to Commonwealth information classified as having a high business impact level or above (classification of ‘PROTECTED’), and SHOULD be applied to Commonwealth information classified as having a medium business impact level."
+      },
+      "Template_page": {
+        "in": "query",
+        "name": "page",
+        "schema": {
+          "type": "number"
+        },
+        "description": "The page that the user wants to return."
+      },
+      "Template_page_limit": {
+        "in": "query",
+        "name": "limit",
+        "schema": {
+          "type": "number"
+        },
+        "description": "The number of results per page the user wants to return."
+      }
+    },
+    "schemas": {
+      "Pet": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "readOnly": true,
+            "description": "A unique number that identifies Pets"
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the pet"
+          },
+          "category": {
+            "$ref": "#/components/schemas/Category",
+            "description": "The category that describes what this pet is"
+          },
+          "photoUrls": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "A list of urls of photos of this pet"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Tag"
+            },
+            "description": "A list of tags that describe this pet, like cute."
+          },
+          "status": {
+            "type": "string",
+            "example": "available",
+            "enum": [
+              "available",
+              "pending",
+              "sold"
+            ],
+            "description": "The staus of this pet, showing if it has been sold or not"
+          }
+        }
+      },
+      "Category": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "readOnly": true,
+            "description": "A unique number that identifies a category"
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the category"
+          }
+        }
+      },
+      "Tag": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "readOnly": true,
+            "description": "A unique number that identifies this tag"
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of this tag"
+          }
+        }
+      },
+      "User": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "description": "A unique number for the user"
+          },
+          "username": {
+            "type": "string",
+            "readOnly": true,
+            "description": "The user's chosen username, which is unique across the store and identifies them"
+          },
+          "firstName": {
+            "type": "string",
+            "description": "The first, or given name of the user"
+          },
+          "lastName": {
+            "type": "string",
+            "description": "The last, or family name"
+          },
+          "email": {
+            "type": "string",
+            "description": "The email address of the user, used for electronic correspondance"
+          },
+          "password": {
+            "type": "string",
+            "description": "The passowrd of the user. Must be stored after encrypyion and salting"
+          },
+          "phone": {
+            "type": "string",
+            "description": "The users phone number"
+          },
+          "userStatus": {
+            "type": "number",
+            "description": "Status of the user"
+          }
+        }
+      },
+      "Order": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "readOnly": true,
+            "description": "A unique number assigned to every order"
+          },
+          "pet": {
+            "$ref": "#/components/schemas/Pet",
+            "description": "Informatio about the pet that is part of this order"
+          },
+          "quantity": {
+            "type": "number",
+            "description": "A number specifying how many of the pet was purchased"
+          },
+          "shipDate": {
+            "type": "string",
+            "description": "The date that the order was shipped from the store"
+          },
+          "status": {
+            "type": "string",
+            "example": "placed",
+            "enum": [
+              "placed",
+              "approved",
+              "delivered"
+            ],
+            "description": "Describes where the order is in it's fulfilment process."
+          },
+          "complete": {
+            "type": "boolean",
+            "description": "Indicates if the order has finished"
+          }
+        }
+      },
+      "Template_ErrorSchema": {
+        "type": "object",
+        "properties": {
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Template_Error"
+            },
+            "description": ""
+          }
+        }
+      },
+      "Template_Error": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "readOnly": true,
+            "description": ""
+          },
+          "detail": {
+            "type": "string",
+            "description": ""
+          },
+          "code": {
+            "type": "string",
+            "description": ""
+          },
+          "source": {
+            "$ref": "#/components/schemas/Template_ErrorSource",
+            "description": ""
+          }
+        }
+      },
+      "Template_ErrorSource": {
+        "type": "object",
+        "properties": {
+          "pointer": {
+            "type": "string",
+            "description": ""
+          },
+          "parameter": {
+            "type": "string",
+            "description": ""
+          }
+        }
+      }
+    },
+    "responses": {
+      "401": {
+        "description": "Unauthorised.",
+        "content": {
+          "application/json": {
+            "examples": {
+              "response": {
+                "value": "{\n  \"status\": \"401\",\n  \"description\": \"The request could not be authenticated.\",\n  \"more_info\": \"\"\n}\n"
+              }
+            }
+          }
+        }
+      },
+      "404": {
+        "description": "Not found.",
+        "content": {
+          "application/json": {
+            "examples": {
+              "response": {
+                "value": "{\n  \"status\": \"404\",\n  \"description\": \"The resource was not found.\",\n  \"more_info\": \"\"\n}\n"
+              }
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "main_auth": {
+        "type": "oauth2",
+        "flows": {
+          "implicit": {
+            "authorizationUrl": "http://example.com/api/oauth/dialog",
+            "scopes": {
+              "read:users": "read users info",
+              "write:users": "modify or remove users"
+            }
+          }
+        }
+      },
+      "api_key": {
+        "type": "apiKey",
+        "name": "api_key",
+        "in": "header"
+      },
+      "basic_auth": {
+        "type": "http",
+        "scheme": "basic"
+      }
+    }
+  }
+}
