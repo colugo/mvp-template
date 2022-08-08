@@ -1,0 +1,435 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "description": "# Introduction\nThis template is intended to to be a good starting point for describing\nhow users can interact with the various methods of your API. \nWe recommend informing the user about various aspects of your api such as:\n\n\n# Getting Started\n\n## **Using The API**\n\n## Extra Developer Documentation:\nIf you have more developer documentation or tutorials specific to helping\ndevelopers interact with this endpoint.\n**url:** 'https://example.com/documentation/link'\n\n# Uptime & Planned Outages\n\n# Authentication & Rate Limits\n# Terms of Use, Copyright and Attribution\nPlease ensure you comply with the following policies prior to using any data\nwithin this API.\n\n- [Terms of Use](https://example.com/terms-use)\n- [Privacy Policy](https://example.com/privacy)\n\n# Contact Us\n",
+    "contact": {
+      "email": "you@example.com",
+      "url": "https://example.com/help"
+    },
+    "version": "2.0.2",
+    "title": "Customs Declaration API"
+  },
+  "paths": {
+    "/shipment/exportDeclarations": {
+      "post": {
+        "tags": [
+          "ExportDeclaration"
+        ],
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeclarationHeader"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Create a new ExportDeclaration",
+        "operationId": "createExportDeclaration",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeclarationHeader"
+              }
+            }
+          }
+        },
+        "description": "Some description of the operation.\n\n***You can use keep using `markdown` here to write out your description in more detail.***\n"
+      }
+    },
+    "/shipment/exportDeclarations/{identificationId}": {
+      "get": {
+        "tags": [
+          "ExportDeclaration"
+        ],
+        "parameters": [
+          {
+            "name": "identificationId",
+            "description": "",
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeclarationHeader"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Get an ExportDeclaration",
+        "operationId": "getExportDeclarationById",
+        "description": "Some description of the operation.\n\n***You can use keep using `markdown` here to write out your description in more detail.***\n"
+      },
+      "put": {
+        "tags": [
+          "ExportDeclaration"
+        ],
+        "parameters": [
+          {
+            "name": "identificationId",
+            "description": "",
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExportDeclaration"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Update a ExportDeclaration",
+        "operationId": "updateExportDeclarationById",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ExportDeclaration"
+              }
+            }
+          }
+        },
+        "description": "Some description of the operation.\n\n***You can use keep using `markdown` here to write out your description in more detail.***\n"
+      }
+    },
+    "/shipment/exportDeclarations/{identificationId}/theItems": {
+      "post": {
+        "tags": [
+          "ExportDeclaration"
+        ],
+        "parameters": [
+          {
+            "name": "identificationId",
+            "description": "",
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItemDetails"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Create a new ExportDeclaration ItemDetails",
+        "operationId": "createExportDeclarationItemDetails",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ItemDetails"
+              }
+            }
+          }
+        },
+        "description": "Some description of the operation.\n\n***You can use keep using `markdown` here to write out your description in more detail.***\n"
+      }
+    }
+  },
+  "components": {
+    "parameters": {
+      "protective_marking": {
+        "in": "header",
+        "name": "X-Protective-Marking",
+        "schema": {
+          "type": "string"
+        },
+        "x-example": "X-Protective-Marking: VER=<ver>, NS=gov.au, SEC=<securityClassification>",
+        "description": "Transmission of any payload, request or response, containing data classified as having a high business impact level or above SHOULD apply by an ‘x-protective-marking’ HTTP header.\n-\tAn ‘x-protective-marking’ HTTP header MUST be used to apply appropriate protective marking to Commonwealth information classified as having a high business impact level or above (classification of ‘PROTECTED’), and SHOULD be applied to Commonwealth information classified as having a medium business impact level."
+      }
+    },
+    "schemas": {
+      "DeclarationHeader": {
+        "type": "object",
+        "properties": {
+          "declarantAgentParty": {
+            "type": "string",
+            "description": "The name, expressed as text, for this trade product group."
+          },
+          "identificationId": {
+            "type": "string",
+            "description": "The unique identifier of this logistics label."
+          },
+          "issueDateTime": {
+            "type": "string",
+            "format": "date",
+            "description": ""
+          }
+        }
+      },
+      "ExportDeclaration": {
+        "type": "object",
+        "properties": {
+          "sender": {
+            "$ref": "#/components/schemas/SenderDetails",
+            "description": ""
+          },
+          "expectedDateOfExport": {
+            "type": "string",
+            "description": "The date, time, date time or other date time value when this supply chain consignment will exit, or has exited from the last port, airport, or border post of the country of export."
+          },
+          "warehouseId": {
+            "type": "string",
+            "description": "The unique identifier of this logistics label."
+          },
+          "branchId": {
+            "type": "string",
+            "description": "The unique identifier of this logistics label."
+          },
+          "customableExciseIndicator": {
+            "type": "boolean",
+            "description": "Identifies if this export is excisable."
+          },
+          "goodsOwner": {
+            "$ref": "#/components/schemas/PartyDetails",
+            "description": ""
+          },
+          "confirmingExportType": {
+            "type": "string",
+            "description": "An identifier assigned to indicate conformity with a regulation or standard for this trade product, such as \"CE\" which declares that the product conforms with the essential requirements of the applicable EC directives."
+          },
+          "transport": {
+            "$ref": "#/components/schemas/TransportDetails",
+            "description": ""
+          },
+          "goodsDetails": {
+            "$ref": "#/components/schemas/GoodsDetail",
+            "description": ""
+          },
+          "invoiceDetails": {
+            "$ref": "#/components/schemas/InvoiceDetail",
+            "description": ""
+          },
+          "theItems": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ItemDetails"
+            },
+            "description": ""
+          },
+          "declarantAgentParty": {
+            "type": "string",
+            "description": "The name, expressed as text, for this trade product group."
+          },
+          "identificationId": {
+            "type": "string",
+            "description": "The unique identifier of this logistics label."
+          },
+          "issueDateTime": {
+            "type": "string",
+            "format": "date",
+            "description": ""
+          }
+        }
+      },
+      "SenderDetails": {
+        "type": "object",
+        "properties": {
+          "partyDetails": {
+            "$ref": "#/components/schemas/PartyDetails",
+            "description": ""
+          },
+          "senderReference": {
+            "type": "string",
+            "description": "The sender-recipient sequence identifier for this supply chain trade transaction."
+          }
+        }
+      },
+      "PartyDetails": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The unique Business Entity Identifier (BEI) as defined by ISO 9362 (Banking telecommunication messages, Bank Identifier Codes) for this requesting party."
+          }
+        }
+      },
+      "TransportDetails": {
+        "type": "object",
+        "properties": {
+          "consigneeName": {
+            "type": "string",
+            "description": "The name, expressed as text, for this trade product group."
+          },
+          "consigneeCity": {
+            "type": "string",
+            "description": "The name, expressed as text, of the city, town or village of this trade address."
+          },
+          "portOfLoading": {
+            "type": "string",
+            "description": "The name, expressed as text, for this trade product group."
+          },
+          "firstPortOfDischarge": {
+            "type": "string",
+            "description": "The name, expressed as text, for this trade product group."
+          },
+          "finalDestinationCountryCode": {
+            "type": "string",
+            "description": "The unique identifier of this logistics label."
+          },
+          "modeOfTransport": {
+            "type": "string",
+            "description": "The type, as expressed as text, of the logistics transport movement."
+          },
+          "vesselId": {
+            "type": "string",
+            "description": "The unique identifier of this logistics label."
+          },
+          "voyageNumber": {
+            "type": "string",
+            "description": "A unique identifier for this logistics transport movement, such as a voyage number, flight number, or trip number, as stated in a schedule."
+          },
+          "flightNumber": {
+            "type": "string",
+            "description": "A unique identifier for this logistics transport movement, such as a voyage number, flight number, or trip number, as stated in a schedule."
+          }
+        }
+      },
+      "GoodsDetail": {
+        "type": "object",
+        "properties": {
+          "exportGoodsType": {
+            "type": "string",
+            "description": "The code specifying the type of specification query."
+          },
+          "totalPackages": {
+            "type": "string",
+            "description": "The number of packages in this subordinate line trade delivery."
+          },
+          "totalContainers": {
+            "type": "string",
+            "description": "The number of packages in this subordinate line trade delivery."
+          }
+        }
+      },
+      "InvoiceDetail": {
+        "type": "object",
+        "properties": {
+          "currencyCode": {
+            "type": "string",
+            "description": "The code specifying the source currency of a trade related currency conversion."
+          },
+          "FOBCurrencyCode": {
+            "type": "string",
+            "description": "The code specifying the source currency of a trade related currency conversion."
+          },
+          "totalFOBValue": {
+            "type": "string",
+            "description": "The monetary value of all freight and other service charges for this supply chain consignment item."
+          }
+        }
+      },
+      "ItemDetails": {
+        "type": "object",
+        "properties": {
+          "globalId": {
+            "type": "string",
+            "description": "A globally unique identifier of this trade party."
+          },
+          "description": {
+            "type": "string",
+            "description": "A textual description of this supply chain schedule."
+          },
+          "weight": {
+            "type": "string",
+            "description": "The measure of the gross weight (mass) of this referenced logistics package and its contents."
+          },
+          "unitValue": {
+            "type": "string",
+            "description": "A monetary value of the unit of this trade price."
+          },
+          "quantity": {
+            "type": "string",
+            "description": "The number of packages in this subordinate line trade delivery."
+          }
+        }
+      },
+      "Template_ErrorSchema": {
+        "type": "object",
+        "properties": {
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Template_Error"
+            },
+            "description": ""
+          }
+        }
+      },
+      "Template_Error": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "readOnly": true,
+            "description": ""
+          },
+          "detail": {
+            "type": "string",
+            "description": ""
+          },
+          "code": {
+            "type": "string",
+            "description": ""
+          },
+          "source": {
+            "$ref": "#/components/schemas/Template_ErrorSource",
+            "description": ""
+          }
+        }
+      },
+      "Template_ErrorSource": {
+        "type": "object",
+        "properties": {
+          "pointer": {
+            "type": "string",
+            "description": ""
+          },
+          "parameter": {
+            "type": "string",
+            "description": ""
+          }
+        }
+      }
+    },
+    "responses": {},
+    "securitySchemes": {}
+  },
+  "servers": [
+    {
+      "url": "/"
+    }
+  ]
+}
