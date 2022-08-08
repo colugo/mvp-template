@@ -15,7 +15,7 @@ layout: tabs
     </ul>
     
     <div class="tab-content">
-        <iframe src="{{ "/docs/mdreference/" | prepend: site.baseurl }}"></iframe>
+        <iframe src="{{ "/jargon/jargon_CustomsDeclaration_specificationPage" | prepend: site.baseurl }}"></iframe>
     </div>
     
     <div class="tab-content">

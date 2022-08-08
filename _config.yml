@@ -32,6 +32,15 @@ timezone: US/Eastern
 defaults:
 
 - scope:
+    path: jargon 
+    type: page 
+  values:
+    layout: reference 
+    sectionid: jargon 
+    seo:
+      type: "WebPage"
+
+- scope:
     path: _docs
     type: docs
   values:
