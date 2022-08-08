@@ -1,0 +1,43 @@
+name: respond-to-jargon-webhook
+on: [repository_dispatch]
+
+
+env:
+  ARTEFACT_DIR: jargon/
+
+jobs:
+  
+  get-jargonArtefacts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: mkdir -p ${{ env.ARTEFACT_DIR }}
+      - uses: actions/setup-python@v2
+      - uses: jannekem/run-python-script-action@v1
+        with:
+          script: |
+            import urllib.request
+
+            def download(url, fileName):
+              try:
+                urllib.request.urlretrieve(url, '${{ env.ARTEFACT_DIR }}' + fileName)
+              except:
+                print('Failed to download: ' + url)
+
+            jsonObj = ${{ toJSON(github.event.client_payload) }}
+            artefacts = jsonObj['artefacts']
+            for artefactType in artefacts:
+              if artefactType == 'lifeCycles':
+                lifeCycles = artefacts['lifeCycles']
+                for cycle in lifeCycles:
+                  download(cycle['url'], cycle['fileName'])
+              else:
+                artefact = artefacts[artefactType]
+                download(artefact['url'], artefact['fileName'])
+
+      - name: Commit & Push changes
+        uses: actions-js/push@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          message: Update ${{ github.event.client_payload.domain.account}}/${{ github.event.client_payload.domain.name }} from Jargon to version ${{ github.event.client_payload.release.version }}
+          branch: gh-pages
