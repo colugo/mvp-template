@@ -1,21 +1,21 @@
 
 
 
-## Data Model of [jargon/CustomsDeclaration](/user/jargon/CustomsDeclaration/v/2.0.3)
+## Data Model of [jargon/CustomsDeclaration](/user/jargon/CustomsDeclaration/v/2.0.4)
 
 ![Data Model of jargon/CustomsDeclaration]({{ site.jargon.staticFiles }}jargon_CustomsDeclaration_dataModel.svg)
-## State Diagram of [Declaration](/user/jargon/CustomsDeclaration/v/2.0.3#artefacts)
+## State Diagram of [Declaration](/user/jargon/CustomsDeclaration/v/2.0.4#artefacts)
 
 ![State Diagram of jargon/CustomsDeclaration/Declaration]({{ site.jargon.staticFiles }}jargon_CustomsDeclaration_Declaration_lifeCycle.svg)
-## State Diagram of [Invoice](/user/jargon/CustomsDeclaration/v/2.0.3#artefacts)
+## State Diagram of [Invoice](/user/jargon/CustomsDeclaration/v/2.0.4#artefacts)
 
 ![State Diagram of jargon/CustomsDeclaration/Invoice]({{ site.jargon.staticFiles }}jargon_CustomsDeclaration_Invoice_lifeCycle.svg)
-## Open API Specification of [jargon/CustomsDeclaration](/user/jargon/CustomsDeclaration/v/2.0.3)
+## Open API Specification of [jargon/CustomsDeclaration](/user/jargon/CustomsDeclaration/v/2.0.4)
 
 This specification is available in different forms:
 - As a [JSON specification]({{ site.jargon.staticFiles }}jargon_CustomsDeclaration_openapi.json)
 - As a [browsable Swagger Ui page]({{ site.jargon.staticFiles }}jargon_CustomsDeclaration_openapi.json)
-## Data Definitions of [jargon/CustomsDeclaration](/user/jargon/CustomsDeclaration/v/2.0.3)
+## Data Definitions of [jargon/CustomsDeclaration](/user/jargon/CustomsDeclaration/v/2.0.4)
 
 ### DeclarationHeader
 
