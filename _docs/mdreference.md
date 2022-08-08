@@ -7,7 +7,7 @@ layout: reference
 
 ## Data Model of [gs_cargo/CargoExports](/user/gs_cargo/CargoExports/v/working)
 
-![Data Model of gs_cargo/CargoExports]({{ site.jargon.staticFiles }}gs_cargo_CargoExports_dataModel.svg)
+![Data Model of gs_cargo/CargoExports]({{ site.jargon.staticFiles }}jargon_CustomsDeclaration_dataModel.svg)
 ## Data Definitions of [gs_cargo/CargoExports](/user/gs_cargo/CargoExports/v/working)
 
 ### Message

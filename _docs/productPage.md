@@ -19,7 +19,7 @@ layout: tabs
     </div>
     
     <div class="tab-content">
-        <iframe src="{{ "/docs/openapi?spec=" | append: site.baseurl | append:"/jargon/gs_cargo_CargoExports_openapi.json" | prepend: site.baseurl }}"></iframe>
+        <iframe src="{{ "/docs/openapi?spec=" | append: site.baseurl | append:"/jargon/jargon_CustomsDeclaration_openapi.json" | prepend: site.baseurl }}"></iframe>
     </div>
     
 </div>
