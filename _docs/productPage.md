@@ -15,11 +15,11 @@ layout: tabs
     </ul>
     
     <div class="tab-content">
-        <iframe src="/docs/mdreference"></iframe>
+        <iframe src="{{ "/docs/mdreference/" | prepend: site.baseurl }}"></iframe>
     </div>
     
     <div class="tab-content">
-        <iframe src="/docs/openapi?spec=/dist/swagger_petstore.yml"></iframe>
+        <iframe src="{{ "/docs/openapi?spec=" | append: site.baseurl | append:"/jargon/gs_cargo_CargoExports_openapi.json" | prepend: site.baseurl }}"></iframe>
     </div>
     
 </div>

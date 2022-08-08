@@ -7,7 +7,7 @@ sectionid: products
 
 <ul class="cards">
   <li class="cards__item">
-    <a href="/docs/productPage" class="card">
+    <a href="{{ "/docs/productPage/" | prepend: site.baseurl }}" class="card">
       <div class="card__image card__image--fence"></div>
       <div class="card__content">
         <div class="card__title">Account Onboarding</div>

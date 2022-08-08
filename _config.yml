@@ -4,7 +4,7 @@ email: your-email@domain.com
 description: >
   Documentation for [company name]'s' [name of API].
 
-baseurl: "" # the subpath of your site, e.g. /blog/
+baseurl: "/mvp-template" # the subpath of your site, e.g. /blog/
 url: https://launchany.github.io/mvp-template # the base hostname & protocol for your site
 git_address: https://github.com/launchany/mvp-template
 git_edit_address: https://github.com/launchany/mvp-template/blob/gh-pages
@@ -57,4 +57,4 @@ collections:
 
 
 jargon:
-  staticFiles: /jargon/
+  staticFiles: /mvp-template/jargon/
