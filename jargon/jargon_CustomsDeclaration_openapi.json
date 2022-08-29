@@ -6,7 +6,7 @@
       "email": "you@example.com",
       "url": "https://example.com/help"
     },
-    "version": "2.0.4",
+    "version": "3.0.0",
     "title": "Customs Declaration API"
   },
   "paths": {
@@ -181,11 +181,6 @@
           "identificationId": {
             "type": "string",
             "description": "The unique identifier of this logistics label."
-          },
-          "issueDateTime": {
-            "type": "string",
-            "format": "date",
-            "description": ""
           }
         }
       },
@@ -246,11 +241,6 @@
           "identificationId": {
             "type": "string",
             "description": "The unique identifier of this logistics label."
-          },
-          "issueDateTime": {
-            "type": "string",
-            "format": "date",
-            "description": ""
           }
         }
       },

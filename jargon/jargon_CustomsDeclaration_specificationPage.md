@@ -1,21 +1,21 @@
 
 
 
-## Data Model of [jargon/CustomsDeclaration](/user/jargon/CustomsDeclaration/v/2.0.4)
+## Data Model of [jargon/CustomsDeclaration](/user/jargon/CustomsDeclaration/v/3.0.0)
 
 ![Data Model of jargon/CustomsDeclaration]({{ site.jargon.staticFiles }}jargon_CustomsDeclaration_dataModel.svg)
-## State Diagram of [Declaration](/user/jargon/CustomsDeclaration/v/2.0.4#artefacts)
+## State Diagram of [Declaration](/user/jargon/CustomsDeclaration/v/3.0.0#artefacts)
 
 ![State Diagram of jargon/CustomsDeclaration/Declaration]({{ site.jargon.staticFiles }}jargon_CustomsDeclaration_Declaration_lifeCycle.svg)
-## State Diagram of [Invoice](/user/jargon/CustomsDeclaration/v/2.0.4#artefacts)
+## State Diagram of [Invoice](/user/jargon/CustomsDeclaration/v/3.0.0#artefacts)
 
 ![State Diagram of jargon/CustomsDeclaration/Invoice]({{ site.jargon.staticFiles }}jargon_CustomsDeclaration_Invoice_lifeCycle.svg)
-## Open API Specification of [jargon/CustomsDeclaration](/user/jargon/CustomsDeclaration/v/2.0.4)
+## Open API Specification of [jargon/CustomsDeclaration](/user/jargon/CustomsDeclaration/v/3.0.0)
 
 This specification is available in different forms:
 - As a [JSON specification]({{ site.jargon.staticFiles }}jargon_CustomsDeclaration_openapi.json)
 - As a [browsable Swagger Ui page]({{ site.jargon.staticFiles }}jargon_CustomsDeclaration_openapi.json)
-## Data Definitions of [jargon/CustomsDeclaration](/user/jargon/CustomsDeclaration/v/2.0.4)
+## Data Definitions of [jargon/CustomsDeclaration](/user/jargon/CustomsDeclaration/v/3.0.0)
 
 ### DeclarationHeader
 
@@ -23,7 +23,6 @@ Property | Definition | Type
 --- | --- | ---
 declarantAgentParty | The name, expressed as text, for this trade product group. | Text
 identificationId | The unique identifier of this logistics label. | Text
-issueDateTime |  | Date
 
 
 ### ExportDeclaration
@@ -43,7 +42,6 @@ invoiceDetails |  | [InvoiceDetail](#invoicedetail)
 theItems |  | [ItemDetails](#itemdetails)
 declarantAgentParty | The name, expressed as text, for this trade product group. | Text
 identificationId | The unique identifier of this logistics label. | Text
-issueDateTime |  | Date
 
 
 ### ItemDetails
